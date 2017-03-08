@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="270dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/title4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:maxLines="1"
+            android:text="史上最萌大众汽车广告刺猬也有信仰"
+            android:textColor="#333333" />
+
+        <Button
+            android:layout_width="32dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/shape_rec_blue"
+            android:text="推广"
+            android:textColor="#1e67e0"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="235dp">
+
+        <fm.jiecao.jcvideoplayer_lib.JCVideoPlayer
+            android:id="@+id/video4"
+            android:layout_width="match_parent"
+            android:layout_height="223dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/img4"
+            android:layout_width="fill_parent"
+            android:layout_height="223dp"
+            android:background="@drawable/video_pic"
+            android:clickable="true"
+            android:visibility="gone"
+            android:scaleType="fitXY" />
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="100dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

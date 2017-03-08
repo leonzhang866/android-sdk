@@ -1,0 +1,63 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wjj.ath"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+    <uses-permission android:name="android.permission.INTERNET" /> 
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+
+    <application
+        android:name="com.wjj.ath.activity.MyApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activity.TabHostActivity"
+            android:label="@string/title_activity_tab_host" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.TabHostTestOne" >
+        </activity>
+        <activity android:name=".activity.TabHostTestTwo" >
+        </activity>
+        <activity android:name=".activity.TabHostTestThree" >
+        </activity>
+        <activity android:name=".activity.TabHostTestFour" >
+        </activity>
+        <activity android:name=".activity.SecondActivity" >
+        </activity>
+        <activity android:name=".activity.DetailActivity" >
+        </activity>
+        <service android:name="com.yiche.ycanalytics.apkdata.StatisticsService"
+            android:process=":yiche_sdk"
+           >
+            <intent-filter android:priority="1000"></intent-filter>
+        </service>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5817febccae7e70b4a0012e8" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="testchannel" >
+        </meta-data>
+        <meta-data
+            android:name="YC_APPKEY"
+            android:value="test" >
+        </meta-data>
+        <meta-data
+            android:name="YC_CHANNEL"
+            android:value="testchannel" >
+        </meta-data>
+    </application>
+
+</manifest>

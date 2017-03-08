@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#f6f6f6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="实景投放"
+            android:textSize="18sp"
+            android:textColor="#303030" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#C5C5C5" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/no_net"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:background="@mipmap/no_net"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="网络请求失败，请检查您的网络设置"/>
+
+    </LinearLayout>
+
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/rotate_header_list_view_frame"
+        xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"
+        android:visibility="visible"
+        android:background="#f1f1f1"
+        cube_ptr:ptr_duration_to_close="200"
+        cube_ptr:ptr_duration_to_close_header="1000"
+        cube_ptr:ptr_keep_header_when_refresh="true"
+        cube_ptr:ptr_pull_to_fresh="false"
+        cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+        cube_ptr:ptr_resistance="1.7">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:dividerHeight="0.5dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay"
+            android:choiceMode="singleChoice" />
+
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+</RelativeLayout>

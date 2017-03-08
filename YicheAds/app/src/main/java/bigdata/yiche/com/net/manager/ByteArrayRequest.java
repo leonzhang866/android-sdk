@@ -1,0 +1,97 @@
+package bigdata.yiche.com.net.manager;
+
+import bigdata.yiche.com.net.AuthFailureError;
+import bigdata.yiche.com.net.NetworkResponse;
+import bigdata.yiche.com.net.Request;
+import bigdata.yiche.com.net.Response;
+import bigdata.yiche.com.net.Response.ErrorListener;
+import bigdata.yiche.com.net.Response.Listener;
+import bigdata.yiche.com.net.http.HttpEntity;
+import bigdata.yiche.com.net.toolbox.HttpHeaderParser;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+
+/**
+ * ByteArrayRequest override getBody() and getParams()
+ * 
+ * @author panxw
+ * 
+ */
+class ByteArrayRequest extends Request<NetworkResponse> {
+
+	private final Listener<NetworkResponse> mListener;
+
+	private Object mPostBody = null;
+
+	private HttpEntity httpEntity =null;
+
+	public ByteArrayRequest(int method, String url, Object postBody, Listener<NetworkResponse> listener, ErrorListener errorListener) {
+		super(method, url, errorListener);
+		this.mPostBody = postBody;
+		this.mListener = listener;
+
+		if (this.mPostBody != null && this.mPostBody instanceof RequestMap) {// contains file
+			this.httpEntity = ((RequestMap) this.mPostBody).getEntity();
+		}
+	}
+
+	/**
+	 * mPostBody is null or Map<String, String>, then execute this method
+	 */
+	@SuppressWarnings("unchecked")
+	protected Map<String, String> getParams() throws AuthFailureError {
+		if (this.httpEntity == null && this.mPostBody != null && this.mPostBody instanceof Map<?, ?>) {
+			return ((Map<String, String>) this.mPostBody);//common Map<String, String>
+		}
+		return null;//process as json, xml or MultipartRequestParams
+	}
+
+	@Override
+	public String getBodyContentType() {
+		if (httpEntity != null) {
+			return httpEntity.getContentType();
+		}
+		return super.getBodyContentType();
+	}
+
+	@Override
+	public byte[] getBody() throws AuthFailureError {
+		if (this.mPostBody != null && this.mPostBody instanceof String) {//process as json or xml
+			String postString = (String) mPostBody;
+			if (postString.length() != 0) {
+				try {
+					return postString.getBytes("UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			} else {
+				return null;
+			}
+		}
+		if (this.httpEntity != null) {//process as MultipartRequestParams
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				try {
+					httpEntity.writeTo(baos);
+				} catch (IOException e) {
+					e.printStackTrace();
+					return null;
+				}
+			return baos.toByteArray();
+		}
+		return super.getBody();// mPostBody is null or Map<String, String>
+	}
+
+	@Override
+	protected Response<NetworkResponse> parseNetworkResponse(NetworkResponse response) {
+		return Response.success(response, HttpHeaderParser.parseCacheHeaders(response));
+	}
+
+	@Override
+	protected void deliverResponse(NetworkResponse response) {
+		this.mListener.onResponse(response);
+	}
+
+}

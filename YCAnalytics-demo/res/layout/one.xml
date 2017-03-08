@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    >
+    <Button
+        android:id="@+id/btn_init"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:text="点击进行初始化"/>
+    <Button
+        android:id="@+id/btn_yclogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_init"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="易车账号登录统计"/>
+    <Button
+        android:id="@+id/btn_thirdlogin"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_yclogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="第三方账号登录统计"/>
+    
+    <Button
+        android:id="@+id/btn_click"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_thirdlogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="点击事件统计"/>
+    <Button
+        android:id="@+id/btn_custom"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_click"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="自定义事件统计"/>
+    
+    <Button
+        android:id="@+id/btn_location"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_custom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="地理位置统计"/>
+    
+    <Button
+        android:id="@+id/btn_time"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_location"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="手动输入页面时长统计"/>
+    
+    <Button
+        android:id="@+id/btn_jump"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_time"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:text="点击跳转到其他页面"/>
+    
+	<Button
+        android:id="@+id/btn_data"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" 
+        android:layout_below="@+id/btn_jump"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="点击生成500条数据"/>
+
+</RelativeLayout>
